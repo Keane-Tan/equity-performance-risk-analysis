@@ -25,6 +25,9 @@ UNION ALL
 SELECT 'JNJ', Date, Open, High, Low, Close, Volume
 FROM jnj_trading
 UNION ALL
+SELECT 'JPM', Date, Open, High, Low, Close, Volume
+FROM jpm_trading
+UNION ALL
 SELECT 'KO', Date, Open, High, Low, Close, Volume
 FROM ko_trading
 UNION ALL
