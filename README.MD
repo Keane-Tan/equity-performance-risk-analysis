@@ -65,37 +65,44 @@ Within each regime, summarize average daily returns, daily-return volatility, th
 
 ## Key Findings
 
-The analysis covers 15 selected U.S. equities and the SPY benchmark over approximately 15 years. The findings below describe historical relationships within this sample, rather than investment recommendations.
+*Based on the exported PostgreSQL summaries for 15 individual stocks plus the SPY benchmark across the approximately 15-year study period. Cumulative returns below are **total price changes over the full period**, **not annualized returns**.*
 
-### 1. Market-volatility conditions substantially changed relative performance
+### 1. The largest long-term gains came with substantial downside risk
 
-NVDA and TSLA recorded the highest average daily excess returns versus SPY during low-VIX conditions, at **+0.25 and +0.24 percentage points**, respectively. During high-VIX conditions, those figures fell to **−0.02 and −0.09 percentage points**.
+**NVDA** had the highest cumulative price return (**67,907.66%**), followed by **TSLA** (**20,075.72%**), compared with **726.81%** for **SPY**. However, both stocks were substantially more volatile and experienced much deeper peak-to-trough declines than the benchmark:
 
-This suggests that strong performance relative to the benchmark in calmer market environments did not necessarily persist when implied market volatility was elevated.
+| Security | Cumulative price return | Annualized volatility | Maximum drawdown |
+| --- | ---: | ---: | ---: |
+| NVDA | 67,907.66% | 44.64% | -66.34% |
+| TSLA | 20,075.72% | 56.94% | -73.63% |
+| SPY | 726.81% | 16.68% | -33.72% |
+| JNJ | 446.99% | 17.34% | -27.38% |
 
-### 2. Several stocks demonstrated stronger benchmark-relative resilience during high-VIX periods
+The comparison illustrates why cumulative returns should be assessed alongside volatility and drawdown, rather than treated as a complete measure of investment performance.
 
-WMT, NEE, and XOM each recorded approximately **+0.12 percentage points** of average daily excess return versus SPY during high-VIX periods. UNH (+0.10 percentage points) and JNJ (+0.09 percentage points) also outperformed on average.
+### 2. Volatility and maximum drawdown are related but not interchangeable
 
-These results highlight differences in historical market-regime sensitivity among the selected securities. Positive excess returns indicate relative outperformance, not necessarily positive absolute stock returns.
+Across the **15 individual stocks**, annualized volatility and the **magnitude of maximum drawdown** had a **Pearson correlation of 0.82**. This is a strong positive relationship within the selected sample, but the two measures capture different aspects of risk. For example, **JNJ** had a smaller maximum drawdown (**-27.38%**) than SPY (**-33.72%**), despite its lower cumulative price return. The correlation is descriptive, based on only 15 retrospectively selected securities, and should not be generalized to the broader market.
 
-### 3. Some securities exhibited pronounced changes in relative performance across regimes
+### 3. High-VIX trading days were associated with weaker SPY returns and greater daily volatility
 
-XOM's average daily excess return shifted from **−0.12 percentage points in low-VIX conditions to +0.12 percentage points in high-VIX conditions**. Similar improvements appeared for WMT (−0.07 to +0.12 percentage points) and NEE (−0.08 to +0.12 percentage points).
+During **low-VIX** observations, SPY's average daily return was **0.19%**, with **0.42%** daily return volatility. During **high-VIX** observations, its average daily return was **-0.14%**, while daily volatility rose to **1.73%** (about **4.1×** the low-VIX level).
 
-These changes suggest that relative stock performance was sensitive to the prevailing market-volatility environment, although the analysis does not establish causality.
+All **15 individual stocks** also had negative *average daily returns* during the high-VIX regime. This is a historical, same-day association, **not evidence that VIX levels predict subsequent returns**.
 
-### 4. High-VIX periods did not produce uniform underperformance
+### 4. Benchmark-relative leaders changed across volatility regimes
 
-Of the 15 individual stocks, **nine displayed positive average daily excess returns versus SPY** during high-VIX periods, while five displayed negative values and one was approximately zero at the dashboard's displayed precision.
+**NVDA** and **TSLA** led the basket on average daily excess return relative to SPY during low-VIX conditions (**+0.25 pp** and **+0.24 pp**, respectively). Their corresponding high-VIX excess returns were **-0.02 pp** and **-0.09 pp**.
 
-This emphasizes the importance of comparing individual securities against a common benchmark rather than assuming all stocks behave similarly during market stress.
+By contrast, the strongest high-VIX average excess returns were **NEE (+0.12 pp)**, **XOM (+0.12 pp)**, and **WMT (+0.12 pp)**. XOM showed a particularly large shift, from **-0.12 pp** in low-VIX periods to **+0.12 pp** in high-VIX periods.
 
-### 5. Long-term performance should be considered alongside investment risk
+### 5. Relative resilience did not mean positive absolute returns
 
-The Tableau risk-versus-return visualization shows substantial differences in cumulative performance and annualized volatility across the selected equities. The complementary maximum-drawdown calculation captures downside exposure that standard deviation alone cannot fully describe.
+**Nine of the 15 stocks** had positive *average daily excess returns* versus SPY in the high-VIX regime; the other six had negative excess returns. Importantly, **all 15 stocks had negative average daily returns in that regime**. Outperformance here means losing less than SPY on average, not necessarily generating positive returns.
 
-Together, these metrics provide a broader perspective on historical performance than cumulative return rankings alone.
+**Interpretation:** These results describe the selected stocks' historical behavior over the study period. VIX regimes were assigned retrospectively using the full sample's 25th and 75th percentile thresholds. Price adjustments, missing trading observations, selection bias, and the distinction between price and total returns limit broader investment conclusions.
+
+**Underlying results:** [Performance and risk summary](results/stock_performance_summary.csv) · [VIX regime summary](results/stock_vix_regime_summary.csv) · [Interactive Tableau dashboard](https://public.tableau.com/app/profile/keane.tan7245/viz/EquityPerformanceMarketRiskAnalysis/Dashboard1)
 
 ### Interpretation and Limitations
 
